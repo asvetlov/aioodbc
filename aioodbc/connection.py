@@ -125,7 +125,7 @@ class Connection:
         connection = self
         return Cursor(c, connection, echo=self._echo)
 
-    def cursor(self) -> _ContextManager:
+    def cursor(self) -> _ContextManager["Cursor"]:
         return _ContextManager["Cursor"](
             self._cursor(), _close_cursor, _close_cursor_on_error
         )
